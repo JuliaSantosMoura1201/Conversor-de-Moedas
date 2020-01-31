@@ -2,15 +2,13 @@ package com.julia.conversordemoedas.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.julia.conversordemoedas.ModeloService;
@@ -31,7 +29,6 @@ public class ConversaoActivity extends AppCompatActivity {
     private TextInputEditText valor;
     private String rate, rate2, valorDig = "0";
     private float valorRate, valorDigF, valorFinal,  valorRate2;
-    private Button btnConverter;
 
     String[] mOptions = {"CAD", "HKD", "ISK", "PHP", "DKK", "HUF", "CZK", "AUD",
     "RON", "SEK", "IDR", "INR", "BRL", "RUB", "HRK", "JPY", "THB", "CHF", "SGD",
@@ -364,7 +361,11 @@ public class ConversaoActivity extends AppCompatActivity {
         }
         float valorFinal = (valorRate2/valorRate)*valorDigF;
         novoValor.setText(String.valueOf(valorFinal));
+    }
 
+    public void abirHistorico(View view){
+        Intent intent = new Intent(getApplicationContext(), HistoricoActivity.class);
+        startActivity(intent);
     }
 
 

@@ -10,8 +10,17 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.julia.conversordemoedas.R;
+import com.julia.conversordemoedas.model.Item;
+
+import java.util.List;
 
 public class AdapterHistorico extends RecyclerView.Adapter<AdapterHistorico.MyViewHolder> {
+
+    private List<Item> lista;
+
+    public AdapterHistorico(List<Item> list) {
+        this.lista = list;
+    }
 
     @NonNull
     @Override
@@ -24,15 +33,16 @@ public class AdapterHistorico extends RecyclerView.Adapter<AdapterHistorico.MyVi
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        holder.moeda1.setText("Real");
-        holder.moeda2.setText("Dolar");
-        holder.valor1.setText("R$ 100,00");
-        holder.valor2.setText("R$ 400, 00");
+        Item item = lista.get(position);
+        holder.moeda1.setText(item.getRate());
+        holder.moeda2.setText(item.getRate2());
+        holder.valor1.setText(item.getValDig());
+        holder.valor2.setText(item.getValFinal());
     }
 
     @Override
     public int getItemCount() {
-        return 10;
+        return this.lista.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
