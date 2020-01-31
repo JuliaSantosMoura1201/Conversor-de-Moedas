@@ -50,9 +50,11 @@
                     android:layout_height="match_parent">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/textValor"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="valor R$" />
+                        android:hint="valor R$"
+                        android:inputType="numberDecimal" />
                 </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -97,15 +99,14 @@
                     android:layout_height="wrap_content" />
 
 
-                <com.google.android.material.textfield.TextInputLayout
+                <TextView
+                    android:id="@+id/novoValor"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Novo Valor" />
-                </com.google.android.material.textfield.TextInputLayout>
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:layout_marginTop="4dp"
+                    android:text="Novo Valor"
+                    android:textSize="18dp" />
 
 
             </LinearLayout>
@@ -113,11 +114,12 @@
     </androidx.cardview.widget.CardView>
 
     <Button
+        android:id="@+id/btnConverter"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:background="@drawable/button_shape"
+        android:onClick="converter"
         android:text="Converter" />
 
 </LinearLayout>
-

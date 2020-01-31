@@ -22,7 +22,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void abrirPrincipal(View view){
-        Intent intent = new Intent(getApplicationContext(), PrincipalActivity.class);
+        Intent intent = new Intent(getApplicationContext(), ConversaoActivity.class);
         startActivity(intent);
     }
 }
