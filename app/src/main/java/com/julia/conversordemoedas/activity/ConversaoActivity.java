@@ -248,7 +248,6 @@ public class ConversaoActivity extends AppCompatActivity {
     public void abrirHistorico(View view){
         Intent intent = new Intent(getApplicationContext(), HistoricoActivity.class);
         startActivity(intent);
-        finish();
     }
 
     public void salvarNoHistorico(){

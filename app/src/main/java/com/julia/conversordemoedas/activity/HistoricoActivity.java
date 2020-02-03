@@ -50,7 +50,6 @@ public class HistoricoActivity extends AppCompatActivity {
     public void abrirConversao(View view){
         Intent intent = new Intent(getApplicationContext(), ConversaoActivity.class);
         startActivity(intent);
-        finish();
     }
 
 

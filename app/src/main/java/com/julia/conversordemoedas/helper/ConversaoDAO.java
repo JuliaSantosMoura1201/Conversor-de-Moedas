@@ -47,7 +47,11 @@ public class ConversaoDAO implements IConversaoDAO{
         String sql = "SELECT * FROM " + DBHelper.TABELA_HISTORCICO + " ;";
         Cursor c = le.rawQuery(sql, null);
 
-        while (c.moveToNext()){
+
+        c.moveToLast();
+        int pos = c.getPosition();
+        c.moveToPosition(pos+1);
+        while (c.moveToPrevious()){
             Item item = new Item();
 
             Long id = c.getLong(c.getColumnIndex("id"));
