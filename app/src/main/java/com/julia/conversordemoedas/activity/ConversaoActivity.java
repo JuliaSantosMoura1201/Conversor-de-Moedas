@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.google.android.material.textfield.TextInputEditText;
 import com.julia.conversordemoedas.ModeloService;
 import com.julia.conversordemoedas.R;
+import com.julia.conversordemoedas.model.Item;
 import com.julia.conversordemoedas.model.Modelo;
 
 import retrofit2.Call;
@@ -27,6 +28,7 @@ public class ConversaoActivity extends AppCompatActivity {
     private Spinner spinner, spinnerMoedaDesejada;
     private TextView txtOutput, textMoedaDesejada, novoValor;
     private TextInputEditText valor;
+    private Item item = new Item();
     private String rate, rate2, valorDig = "0";
     private float valorRate, valorDigF, valorFinal,  valorRate2;
 
@@ -73,8 +75,8 @@ public class ConversaoActivity extends AppCompatActivity {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                rate = parent.getItemAtPosition(position).toString();
-                txtOutput.setText(rate);
+                item.setRate(parent.getItemAtPosition(position).toString());
+                txtOutput.setText(item.getRate());
                 getBandeira1();
                 //Toast.makeText(getApplicationContext(), String.valueOf(bandeira1), Toast.LENGTH_SHORT).show();
 
@@ -96,8 +98,8 @@ public class ConversaoActivity extends AppCompatActivity {
         spinnerMoedaDesejada.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                rate2 = parent.getItemAtPosition(position).toString();
-                textMoedaDesejada.setText(rate2);
+                item.setRate2(parent.getItemAtPosition(position).toString());
+                textMoedaDesejada.setText(item.getRate2());
                 getBandeira2();
             }
 
@@ -117,35 +119,35 @@ public class ConversaoActivity extends AppCompatActivity {
                 Modelo modelo = response.body();
 
 
-                switch (rate2){
+                switch (item.getRate2()){
                     case "CAD":
                         valorRate2 = modelo.getRates().getCAD();
                         break;
                     case "HKD":
                         valorRate2 = modelo.getRates().getHKD();
                         break;
-                        case "ISK":
+                    case "ISK":
                         valorRate2 = modelo.getRates().getISK();
                         break;
-                        case "PHP":
+                    case "PHP":
                         valorRate2 = modelo.getRates().getPHP();
                         break;
-                        case "DKK":
+                    case "DKK":
                         valorRate2 = modelo.getRates().getDKK();
                         break;
-                        case "HUF":
+                    case "HUF":
                         valorRate2 = modelo.getRates().getHUF();
                         break;
-                        case "CZK":
+                    case "CZK":
                         valorRate2 = modelo.getRates().getCZK();
                         break;
-                        case "AUD":
+                    case "AUD":
                         valorRate2 = modelo.getRates().getAUD();
                         break;
-                        case "RON":
+                    case "RON":
                         valorRate2 = modelo.getRates().getRON();
                         break;
-                        case "SEK":
+                    case "SEK":
                         valorRate2 = modelo.getRates().getSEK();
                         break;
                     case "IDR":
@@ -239,7 +241,7 @@ public class ConversaoActivity extends AppCompatActivity {
                 Modelo modelo = response.body();
 
 
-                switch (rate){
+                switch (item.getRate()){
                     case "CAD":
                         valorRate = modelo.getRates().getCAD();
                         break;
@@ -353,14 +355,15 @@ public class ConversaoActivity extends AppCompatActivity {
     }
 
     public void converter(View view){
-        valorDig = valor.getText().toString();
-        if(!valorDig.isEmpty()){
-            valorDigF = Float.parseFloat(valorDig);
+        item.setValDig(valor.getText().toString());
+
+        if(!item.getValDig().isEmpty()){
+            valorDigF = Float.parseFloat(item.getValDig());
         }else{
             valorDigF = 1f;
         }
-        float valorFinal = (valorRate2/valorRate)*valorDigF;
-        novoValor.setText(String.valueOf(valorFinal));
+        item.setValFinal(String.valueOf((valorRate2/valorRate)*valorDigF));
+        novoValor.setText(item.getValFinal());
     }
 
     public void abirHistorico(View view){
