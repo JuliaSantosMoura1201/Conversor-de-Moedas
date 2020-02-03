@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.google.android.material.textfield.TextInputEditText;
 import com.julia.conversordemoedas.ModeloService;
 import com.julia.conversordemoedas.R;
+import com.julia.conversordemoedas.helper.ConversaoDAO;
 import com.julia.conversordemoedas.model.Item;
 import com.julia.conversordemoedas.model.Modelo;
 
@@ -29,7 +30,6 @@ public class ConversaoActivity extends AppCompatActivity {
     private TextView txtOutput, textMoedaDesejada, novoValor;
     private TextInputEditText valor;
     private Item item = new Item();
-    private String rate, rate2, valorDig = "0";
     private float valorRate, valorDigF, valorFinal,  valorRate2;
 
     String[] mOptions = {"CAD", "HKD", "ISK", "PHP", "DKK", "HUF", "CZK", "AUD",
@@ -364,6 +364,9 @@ public class ConversaoActivity extends AppCompatActivity {
         }
         item.setValFinal(String.valueOf((valorRate2/valorRate)*valorDigF));
         novoValor.setText(item.getValFinal());
+
+        ConversaoDAO conversaoDAO = new ConversaoDAO(getApplicationContext());
+        conversaoDAO.salvar(item);
     }
 
     public void abirHistorico(View view){

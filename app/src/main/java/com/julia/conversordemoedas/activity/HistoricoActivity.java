@@ -4,11 +4,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.ContentValues;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 
 import com.julia.conversordemoedas.R;
 import com.julia.conversordemoedas.adapter.AdapterHistorico;
+import com.julia.conversordemoedas.helper.ConversaoDAO;
+import com.julia.conversordemoedas.helper.DBHelper;
 import com.julia.conversordemoedas.model.Item;
 
 import java.util.ArrayList;
@@ -37,29 +41,13 @@ public class HistoricoActivity extends AppCompatActivity {
     }
 
     public void criarItens(){
-        Item item = new Item("cad", "hkd", "5.7", "36");
-        this.listaItens.add(item);
+        Log.i("CriarItens", "Existo");
+        ConversaoDAO conversaoDAO = new ConversaoDAO(getApplicationContext());
+        listaItens = conversaoDAO.listar();
 
-        item = new Item("idk", "php", "5.7", "36");
-        this.listaItens.add(item);
-
-        item = new Item("dkk", "huf", "5.7", "36");
-        this.listaItens.add(item);
-
-        item = new Item("czk", "aud", "5.7", "36");
-        this.listaItens.add(item);
-
-        item = new Item("ron", "sek", "5.7", "36");
-        this.listaItens.add(item);
-
-        item = new Item("idr", "inr", "5.7", "36");
-        this.listaItens.add(item);
-
-        item = new Item("inr", "php", "5.7", "36");
-        this.listaItens.add(item);
-
-        item = new Item("idk", "ron", "5.7", "36");
-        this.listaItens.add(item);
+        if (listaItens.isEmpty()){
+            Log.i("CriarItens", "vazia");
+        }
     }
 
 
