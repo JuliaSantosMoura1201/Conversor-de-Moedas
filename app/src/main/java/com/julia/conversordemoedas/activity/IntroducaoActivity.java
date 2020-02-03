@@ -1,6 +1,4 @@
-package com.julia.conversordemoedas;
-
-import androidx.appcompat.app.AppCompatActivity;
+package com.julia.conversordemoedas.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,19 +6,17 @@ import android.view.View;
 
 import com.heinrichreimersoftware.materialintro.app.IntroActivity;
 import com.heinrichreimersoftware.materialintro.slide.FragmentSlide;
-import com.heinrichreimersoftware.materialintro.slide.SimpleSlide;
-import com.julia.conversordemoedas.activity.CadastroActivity;
-import com.julia.conversordemoedas.activity.LoginActivity;
+import com.julia.conversordemoedas.R;
 
-public class MainActivity extends IntroActivity {
+public class IntroducaoActivity extends com.heinrichreimersoftware.materialintro.app.IntroActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-       // setContentView(R.layout.activity_main);
 
         setButtonBackVisible(false);
         setButtonNextVisible(false);
+
 
         addSlide(new FragmentSlide.Builder()
             .background(android.R.color.white)
@@ -37,6 +33,7 @@ public class MainActivity extends IntroActivity {
         addSlide(new FragmentSlide.Builder()
                 .background(android.R.color.white)
                 .fragment(R.layout.slider_cadastro)
+                .canGoForward(false)
                 .build()
         );
 
@@ -45,11 +42,13 @@ public class MainActivity extends IntroActivity {
     public void abrirCadastro(View view){
         Intent intent = new Intent(getApplicationContext(), CadastroActivity.class);
         startActivity(intent);
+        finish();
     }
 
     public void abrirLogin(View view){
         Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
         startActivity(intent);
+        finish();
     }
 }
 

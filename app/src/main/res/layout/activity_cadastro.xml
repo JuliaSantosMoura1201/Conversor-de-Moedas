@@ -15,18 +15,19 @@
         android:layout_marginEnd="32dp"
         android:layout_marginRight="32dp"
         android:background="@drawable/button_shape"
+        android:onClick="abrirPrincipal"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
-        android:text="Cadastrar"
+        android:text="@string/cadastrar"
         android:textColor="@android:color/white"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout5" />
+        app:layout_constraintTop_toBottomOf="@+id/tilSenha" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout4"
+        android:id="@+id/tilNome"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -34,23 +35,25 @@
         android:layout_marginEnd="32dp"
         android:layout_marginRight="32dp"
         android:background="@drawable/text_shape"
-        app:layout_constraintBottom_toTopOf="@+id/textInputLayout3"
+        app:layout_constraintBottom_toTopOf="@+id/tilEmail"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2">
+        app:layout_constraintTop_toBottomOf="@+id/imgLogoCadastro">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tietNome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
             android:background="@android:color/transparent"
-            android:gravity="left"
-            android:hint="Nome" />
+            android:gravity="start"
+            android:hint="@string/nome" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout3"
+        android:id="@+id/tilEmail"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -58,23 +61,26 @@
         android:layout_marginEnd="32dp"
         android:layout_marginRight="32dp"
         android:background="@drawable/text_shape"
-        app:layout_constraintBottom_toTopOf="@+id/textInputLayout5"
+        app:layout_constraintBottom_toTopOf="@+id/tilSenha"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout4">
+        app:layout_constraintTop_toBottomOf="@+id/tilNome">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tietEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
             android:background="@android:color/transparent"
-            android:gravity="left"
-            android:hint="E-mail" />
+            android:gravity="start"
+            android:hint="@string/email"
+            android:inputType="textEmailAddress" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout5"
+        android:id="@+id/tilSenha"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -82,27 +88,30 @@
         android:layout_marginEnd="32dp"
         android:layout_marginRight="32dp"
         android:background="@drawable/text_shape"
-        android:gravity="right"
         app:layout_constraintBottom_toTopOf="@+id/buttonEntrar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout3">
+        app:layout_constraintTop_toBottomOf="@+id/tilEmail">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tietSenha"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
             android:background="@android:color/transparent"
-            android:gravity="left"
-            android:hint="Senha" />
+            android:gravity="start"
+            android:hint="@string/senha"
+            android:inputType="textPassword" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/imgLogoCadastro"
         android:layout_width="250dp"
         android:layout_height="250dp"
-        app:layout_constraintBottom_toTopOf="@+id/textInputLayout4"
+        android:contentDescription="@string/Logo"
+        app:layout_constraintBottom_toTopOf="@+id/tilNome"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"

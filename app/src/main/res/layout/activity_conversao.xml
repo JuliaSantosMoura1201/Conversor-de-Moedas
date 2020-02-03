@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="30dp"
+    android:layout_margin="20dp"
     android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
@@ -21,45 +21,34 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp">
+            android:padding="20dp">
 
-            <LinearLayout
+            <TextView
+                android:id="@+id/textNome"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="15dp"
-                android:orientation="vertical"
-                android:padding="10dp"
-                android:paddingLeft="20dp"
-                android:paddingRight="20dp">
+                android:layout_height="wrap_content"
+                android:text="@string/tipoMoeda"
+                android:textSize="12sp" />
 
-                <TextView
-                    android:id="@+id/textNome"
+            <Spinner
+                android:id="@+id/rates_spinner"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilValor"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tietValor"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="TIPO MOEDA"
-                    android:textSize="12sp" />
-
-                <Spinner
-                    android:id="@+id/rates_spinner"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:entries="@array/rates" />
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/textValor"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="valor R$"
-                        android:inputType="numberDecimal" />
-                </com.google.android.material.textfield.TextInputLayout>
+                    android:hint="@string/exValor"
+                    android:inputType="numberDecimal" />
+            </com.google.android.material.textfield.TextInputLayout>
 
 
-            </LinearLayout>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
@@ -74,44 +63,31 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp">
+            android:padding="20dp">
 
-            <LinearLayout
+            <TextView
+                android:id="@+id/textMoedaDesejada"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="15dp"
-                android:orientation="vertical"
-                android:padding="10dp"
-                android:paddingLeft="20dp"
-                android:paddingRight="20dp">
+                android:layout_height="wrap_content"
+                android:text="@string/moedaDesejada"
+                android:textSize="12sp" />
 
-                <TextView
-                    android:id="@+id/textMoedaDesejada"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="MOEDA DESEJADA"
-                    android:textSize="12sp" />
-
-                <Spinner
-                    android:id="@+id/spinnerMoedaDesejada"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:entries="@array/rates" />
+            <Spinner
+                android:id="@+id/spinnerMoedaDesejada"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp" />
 
 
-                <TextView
-                    android:id="@+id/novoValor"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="2dp"
-                    android:layout_marginTop="4dp"
-                    android:text="Novo Valor"
-                    android:textSize="18dp" />
+            <TextView
+                android:id="@+id/novoValor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:layout_marginTop="4dp"
+                android:text="@string/novoValor"
+                android:textSize="18sp" />
 
-
-            </LinearLayout>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
@@ -122,7 +98,7 @@
         android:layout_marginTop="15dp"
         android:background="@drawable/button_shape"
         android:onClick="converter"
-        android:text="Converter" />
+        android:text="@string/converter" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -144,14 +120,15 @@
                 android:layout_marginRight="8dp"
                 android:layout_marginBottom="16dp"
                 android:clickable="true"
-                android:onClick="abirHistorico"
+                android:contentDescription="@string/fabConversao"
+                android:onClick="abrirHistorico"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="1.0"
-                app:srcCompat="@drawable/ic_swap_horiz_gray_24dp" />
+                app:srcCompat="@drawable/ic_historico_white_24dp" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </LinearLayout>

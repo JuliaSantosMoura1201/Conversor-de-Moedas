@@ -41,16 +41,6 @@ public class ConversaoDAO implements IConversaoDAO{
     }
 
     @Override
-    public boolean atualizar(Item item) {
-        return false;
-    }
-
-    @Override
-    public boolean deletar(Item item) {
-        return false;
-    }
-
-    @Override
     public List<Item> listar() {
         List<Item> itens = new ArrayList<>();
 
@@ -73,7 +63,6 @@ public class ConversaoDAO implements IConversaoDAO{
             item.setValDig(valDig);
             item.setValFinal(valFinal);
 
-            Log.i("TESTE_LISTA", item.getRate());
             itens.add(item);
         }
 

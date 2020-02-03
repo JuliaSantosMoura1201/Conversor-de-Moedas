@@ -13,13 +13,6 @@ public class Item {
     public Item() {
     }
 
-    public Item(String rate, String rate2, String valDig, String valFinal, Long id) {
-        this.rate = rate;
-        this.rate2 = rate2;
-        this.valDig = valDig;
-        this.valFinal = valFinal;
-        this.id = id;
-    }
 
     public String getRate() {
         return rate;

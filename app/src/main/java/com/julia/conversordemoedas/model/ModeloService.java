@@ -1,4 +1,4 @@
-package com.julia.conversordemoedas;
+package com.julia.conversordemoedas.model;
 
 import com.julia.conversordemoedas.model.Modelo;
 
