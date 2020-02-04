@@ -1,5 +1,6 @@
 package com.julia.conversordemoedas.activity;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -8,6 +9,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Toast;
@@ -25,8 +28,11 @@ public class HistoricoActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private List<Item> listaItens = new ArrayList<>();
+    private List<Item> listaInversa = new ArrayList<>();
     private Item item;
-    AdapterHistorico adapterHistorico;
+    private AdapterHistorico adapterHistorico;
+    private int flag;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +62,6 @@ public class HistoricoActivity extends AppCompatActivity {
                                         ConversaoDAO conversaoDAO = new ConversaoDAO(getApplicationContext());
                                         if (conversaoDAO.deletar(item)){
                                             preencheLista();
-                                            Toast.makeText(getApplicationContext(), "Sucesso ao excluir!", Toast.LENGTH_SHORT).show();
                                         }else{
                                             Toast.makeText(getApplicationContext(), "Erro ao excluir!", Toast.LENGTH_SHORT).show();
                                         }
@@ -81,8 +86,8 @@ public class HistoricoActivity extends AppCompatActivity {
 
     public void preencheLista(){
         ConversaoDAO conversaoDAO = new ConversaoDAO(getApplicationContext());
-        listaItens = conversaoDAO.listar();
 
+        listaItens = conversaoDAO.listar();
         adapterHistorico = new AdapterHistorico(listaItens);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
@@ -95,6 +100,5 @@ public class HistoricoActivity extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(), ConversaoActivity.class);
         startActivity(intent);
     }
-
 
 }

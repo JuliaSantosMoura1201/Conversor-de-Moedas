@@ -91,5 +91,5 @@
         android:id="@+id/Divisor1"
         android:layout_width="fill_parent"
         android:layout_height="1dip"
-        android:background="#A8A8A8" />
+        android:background="@color/colorAccent" />
 </LinearLayout>

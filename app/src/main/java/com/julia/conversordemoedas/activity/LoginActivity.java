@@ -11,14 +11,11 @@ import com.julia.conversordemoedas.R;
 
 public class LoginActivity extends AppCompatActivity {
 
-    Button buttonEntrar;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        buttonEntrar = findViewById(R.id.buttonEntrar);
     }
 
     public void abrirPrincipal(View view){

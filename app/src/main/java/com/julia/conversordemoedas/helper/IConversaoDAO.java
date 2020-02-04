@@ -10,5 +10,5 @@ public interface IConversaoDAO {
 
     public boolean deletar(Item item);
 
-    public List<Item> listar(int flag);
+    public List<Item> listar();
 }
