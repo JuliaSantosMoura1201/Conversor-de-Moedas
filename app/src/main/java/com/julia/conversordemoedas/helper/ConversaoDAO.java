@@ -41,34 +41,70 @@ public class ConversaoDAO implements IConversaoDAO{
     }
 
     @Override
-    public List<Item> listar() {
+    public boolean deletar(Item item) {
+        try {
+            String[] args = {item.getId().toString()};
+            escreve.delete(DBHelper.TABELA_HISTORCICO, "id=?", args);
+            Log.i("INFO_CONVERSAODAO", "Conversao removida com sucesso!");
+        }catch (Exception e){
+            Log.e("INFO_CONVERSAODAO", "Erro ao remover a conversao" + e.getMessage());
+        }
+        return true;
+    }
+
+    @Override
+    public List<Item> listar(int flag) {
         List<Item> itens = new ArrayList<>();
 
         String sql = "SELECT * FROM " + DBHelper.TABELA_HISTORCICO + " ;";
         Cursor c = le.rawQuery(sql, null);
 
+        if(flag == 0){
+            c.moveToLast();
+            int pos = c.getPosition();
+            c.moveToPosition(pos+1);
 
-        c.moveToLast();
-        int pos = c.getPosition();
-        c.moveToPosition(pos+1);
-        while (c.moveToPrevious()){
-            Item item = new Item();
+            while (c.moveToPrevious()){
+                Item item = new Item();
 
-            Long id = c.getLong(c.getColumnIndex("id"));
-            String rate = c.getString(c.getColumnIndex("rate"));
-            String rate2 = c.getString(c.getColumnIndex("rate2"));
-            String valDig = c.getString(c.getColumnIndex("valDig"));
-            String valFinal = c.getString(c.getColumnIndex("valFinal"));
+                Long id = c.getLong(c.getColumnIndex("id"));
+                String rate = c.getString(c.getColumnIndex("rate"));
+                String rate2 = c.getString(c.getColumnIndex("rate2"));
+                String valDig = c.getString(c.getColumnIndex("valDig"));
+                String valFinal = c.getString(c.getColumnIndex("valFinal"));
 
 
-            item.setId(id);
-            item.setRate(rate);
-            item.setRate2(rate2);
-            item.setValDig(valDig);
-            item.setValFinal(valFinal);
+                item.setId(id);
+                item.setRate(rate);
+                item.setRate2(rate2);
+                item.setValDig(valDig);
+                item.setValFinal(valFinal);
 
-            itens.add(item);
+                itens.add(item);
+            }
+        }else{
+            while (c.moveToNext()){
+                Item item = new Item();
+
+                Long id = c.getLong(c.getColumnIndex("id"));
+                String rate = c.getString(c.getColumnIndex("rate"));
+                String rate2 = c.getString(c.getColumnIndex("rate2"));
+                String valDig = c.getString(c.getColumnIndex("valDig"));
+                String valFinal = c.getString(c.getColumnIndex("valFinal"));
+
+
+                item.setId(id);
+                item.setRate(rate);
+                item.setRate2(rate2);
+                item.setValDig(valDig);
+                item.setValFinal(valFinal);
+
+                itens.add(item);
+            }
         }
+
+
+
 
         return itens;
     }

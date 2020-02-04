@@ -8,5 +8,7 @@ public interface IConversaoDAO {
 
     public boolean salvar(Item item);
 
-    public List<Item> listar();
+    public boolean deletar(Item item);
+
+    public List<Item> listar(int flag);
 }
